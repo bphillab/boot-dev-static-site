@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from src.textnode import TextType
+from textnode import TextType
 
 
 @dataclass
@@ -22,7 +22,7 @@ class HTMLNode:
         return tmp[:-1]
 
     def __repr__(self) -> str:
-        return f"HTMLNode(tag='{self.tag}', attributes={self.attributes}, children={len(self.children)}, props={self.props})"
+        return f"HTMLNode(tag='{self.tag}', value={self.value}, children={len(self.children)}, props={self.props})"
 
 class LeafNode(HTMLNode):
     def __init__(self, tag:str|None, value:str, props:dict[str, str]| None = None):
@@ -38,7 +38,7 @@ class LeafNode(HTMLNode):
         return f"<{self.tag}{props_segment}>{self.value}</{self.tag}>"
 
     def __repr__(self) -> str:
-        return f"LeafNode(tag='{self.tag}', attributes={self.attributes}, props={self.props})"
+        return f"LeafNode(tag='{self.tag}', values={self.value}, props={self.props})"
 
 
 class ParentNode(HTMLNode):
